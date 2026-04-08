@@ -1,0 +1,2 @@
+# BreezeMobile
+Breeze Mobile — A short game where you breed a session horse from generated Alógo (a fictional breed) parents, then run a simulated race driven by pre-set progress checkpoints (not full real-time racing). The focus is three phone gestures: swipe to pick parents, double/triple tap for UI (help vs. reset the parent pool), and long-press to confirm important actions (breed / enter race), each with clear on-screen feedback.
