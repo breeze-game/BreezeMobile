@@ -1,0 +1,319 @@
+//SO7 STATS
+//CONDITION
+//AKA FORM
+//possibility to decrease each race, never increases
+//depends on deteriorationPotential
+//CONDITION PERCENT
+//regens over time, only decreases at rollover
+//so inactive horses lose condition as well
+//only increases by racing
+var furlong = 5;
+var surface = "dirt";
+var going = "good";
+var preferredSurface = "dirt";
+var preferredGoing = "good";
+var potential = 86;
+var realizedPotential = 80;
+var fitness = 97;
+var reputation = 700;
+var condition = 70;
+var conditionPercent = 86;
+// 
+var spd = 20;
+var stamina = 5;
+var acceleration = 10;
+var start = 7;
+var strength = 15;
+var intelligence = 7;
+var movement = 10;
+var tenacity = 83;
+var enthusiasm = 90;
+var confidence = 90;
+var battlingQualities = 98;
+var cruisingBurst = 25;
+var extraSpeedRating = 78;
+var finishApplication = 93;
+var consistency = 80;
+var distanceAdaptability = 90;
+var goingSurfaceAdaptability = 90;
+var quirks = 10;
+// 
+var stats;
+var actualCondition;
+var actualFitness;
+var performance;
+var actualPerformance;
+var maximumPerformance;
+var actualBattlingQualities;
+var actualCruisingBurst;
+var actualExtraSpeedRating;
+var actualFinishApplication;
+// 
+// 
+// 
+// 
+// 
+function calculatePerformance(n) {
+  console.log("----------------");
+  stats = spd+stamina+acceleration+start+strength+intelligence+movement;
+  actualCondition = Math.round(condition * (conditionPercent/100));
+  actualFitness = Math.round(fitness * (actualCondition / 100));
+  performance = Math.round((reputation * (actualFitness/100)) + stats);
+  actualPerformance = Math.round(performance * (realizedPotential/100));
+  maximumPerformance = Math.round(performance * (potential/100));
+  actualBattlingQualities = Math.round(battlingQualities * ((intelligence + strength + enthusiasm)/100));
+  actualCruisingBurst = Math.round(cruisingBurst * ((movement + spd + acceleration)/50));
+  actualExtraSpeedRating = Math.round(extraSpeedRating * ((start + movement + acceleration)/100));
+  actualFinishApplication = Math.round(finishApplication * ((spd + confidence + tenacity)/100));
+  //POTENTIAL
+  if (realizedPotential >= 90) {
+    actualPerformance = Math.round(actualPerformance*1.5);
+    console.log("High Potential bonus");
+  }
+  //FINISH APPLICATION
+  if (actualFinishApplication >= 100) {
+    actualPerformance = Math.round(actualPerformance*1.5);
+    console.log("Finish Application bonus");
+  }
+  //EXTRA SPEED RATING
+  if (actualExtraSpeedRating >= 100) {
+    actualPerformance = Math.round(actualPerformance*1.5);
+    console.log("Extra Speed Rating bonus");
+  }
+  //CRUISING BURST
+  if (actualCruisingBurst >= 90) {
+    actualPerformance = Math.round(actualPerformance*1.3);
+    console.log("Cruising Burst bonus");
+  }
+  //BATTLING QUALITIES
+  if (actualBattlingQualities >= 80) {
+    actualPerformance = Math.round(actualPerformance*1.1);
+    console.log("Battling Qualities bonus");
+  }
+  //ACCELERATION
+  if (acceleration >= 15) {
+    actualPerformance = Math.round(actualPerformance*1.05);
+    console.log("Acceleration bonus");
+  }
+  //START
+  if (start >= 15) {
+    actualPerformance = Math.round(actualPerformance*1.5);
+    console.log("Start bonus");
+  }
+  //SURFACE
+  if (surface == preferredSurface) {
+    actualPerformance = Math.round(actualPerformance*1.25);
+    console.log("Horse loved the ground/surface");
+  } else {
+    if ((randomNumber(0, 100)) >= goingSurfaceAdaptability) {
+      actualPerformance = Math.round(actualPerformance * (goingSurfaceAdaptability/100));
+      console.log("Surface not suitable");
+    }
+  }
+  //GOING
+  if (going == preferredGoing) {
+    actualPerformance = Math.round(actualPerformance*1.25);
+    console.log("Horse loved the going");
+  } else {
+    if ((randomNumber(0, 100)) >= goingSurfaceAdaptability) {
+      actualPerformance = Math.round(actualPerformance * (goingSurfaceAdaptability/100));
+      console.log("Going not suitable");
+    }
+  }
+  //SPEED - DISTANCE ADAPTABILITY
+  if (spd >= 15 && furlong <= 6) {
+    actualPerformance = Math.round(actualPerformance*1.25);
+    console.log("Sprinter");
+  } else if (((spd > 5 && spd < 15) && (furlong >= 7 && furlong <= 9))) {
+    actualPerformance = Math.round(actualPerformance*1.25);
+    console.log("Miler");
+  } else if ((spd <= 5 && furlong >= 10)) {
+    actualPerformance = Math.round(actualPerformance*1.25);
+    console.log("Stayer");
+  } else {
+    if ((randomNumber(0, 100)) >= distanceAdaptability) {
+      actualPerformance = Math.round(actualPerformance * (distanceAdaptability/100));
+      console.log("Distance not suitable");
+    }
+  }
+  //STAMINA - DISTANCE ADAPTABILITY
+  if (stamina <= 5 && furlong <= 6) {
+    actualPerformance = Math.round(actualPerformance*1.25);
+    console.log("Sprinter");
+  } else if (((stamina > 5 && stamina < 15) && (furlong >= 7 && furlong <= 9))) {
+    actualPerformance = Math.round(actualPerformance*1.25);
+    console.log("Miler");
+  } else if ((stamina >= 15 && furlong >= 10)) {
+    actualPerformance = Math.round(actualPerformance*1.25);
+    console.log("Stayer");
+  } else {
+    if ((randomNumber(0, 100)) >= distanceAdaptability) {
+      actualPerformance = Math.round(actualPerformance * (distanceAdaptability/100));
+      console.log("Distance not suitable");
+    }
+  }
+  //ENTHUSIASM
+  if (enthusiasm <= 25) {
+    actualPerformance = actualPerformance;
+    console.log("Disposition: Laid Back (can be lazy, but not affected by crowd noise)");
+  } else if (enthusiasm < 75) {
+    actualPerformance = actualPerformance;
+    console.log("Disposition: Normal");
+  } else if ((enthusiasm <= 100 && (randomNumber(0, 100)) <= enthusiasm)) {
+    actualPerformance = Math.round(actualPerformance * ((100 - enthusiasm)/100));
+    console.log("Disposition: Excitable (likely to sweat up badly)");
+  }
+  //QUIRKS
+  if ((randomNumber(0, 100)) <= quirks) {
+    actualPerformance = Math.round(actualPerformance * ((100 - quirks)/100));
+    console.log("Did not want to leave the gate");
+  } else {
+    actualPerformance = actualPerformance;
+  }
+  //CONSISTENCY
+  if (randomNumber(0, randomNumber(50, 100)) >= consistency) {
+    actualPerformance = Math.round(actualPerformance * (randomNumber(randomNumber(25, 50), randomNumber(150, 200))/100));
+    console.log("Displayed inconsistency");
+  } else {
+    actualPerformance = actualPerformance;
+  }
+  console.log("----------------");
+}
+// 
+// 
+// 
+// 
+// 
+onEvent("horseDropdown", "input", function( ) {
+  
+});
+// 
+onEvent("reputation", "input", function( ) {
+  reputation = getNumber("reputation");
+});
+// 
+onEvent("furlong", "input", function( ) {
+  if (getText("furlong") == "5f") {
+    furlong = 5;
+  } else if ((getText("furlong") == "6f")) {
+    furlong = 6;
+  } else if (getText("furlong") == "7f") {
+    furlong = 7;
+  } else if (getText("furlong") == "1m") {
+    furlong = 8;
+  } else if (getText("furlong") == "1m1f") {
+    furlong = 9;
+  } else if (getText("furlong") == "1m2f") {
+    furlong = 10;
+  } else if (getText("furlong") == "1m3f") {
+    furlong = 11;
+  } else if (getText("furlong") == "1m4f") {
+    furlong = 12;
+  } else if (getText("furlong") == "1m5f") {
+    furlong = 13;
+  } else if (getText("furlong") == "1m6f") {
+    furlong = 14;
+  } else if (getText("furlong") == "1m7f") {
+    furlong = 15;
+  } else if (getText("furlong") == "2m") {
+    furlong = 16;
+  }
+});
+onEvent("surface", "input", function( ) {
+  surface = getText("surface");
+});
+onEvent("going", "input", function( ) {
+  going = getText("going");
+});
+// 
+onEvent("potential", "input", function( ) {
+  potential = getNumber("potential");
+  if (realizedPotential > potential) {
+    realizedPotential = potential;
+    setNumber("realizedPotential", potential);
+  }
+});
+onEvent("realizedPotential", "input", function( ) {
+  realizedPotential = getNumber("realizedPotential");
+  if (realizedPotential > potential) {
+    realizedPotential = potential;
+    setNumber("realizedPotential", potential);
+  }
+});
+onEvent("fitness", "input", function( ) {
+  fitness = getNumber("fitness");
+});
+onEvent("condition", "input", function( ) {
+  condition = getNumber("condition");
+});
+onEvent("conditionPercent", "input", function( ) {
+  conditionPercent = getNumber("conditionPercent");
+});
+// 
+onEvent("surfacePreference", "input", function( ) {
+  preferredSurface = getText("surfacePreference");
+});
+onEvent("goingPreference", "input", function( ) {
+  preferredGoing = getText("goingPreference");
+});
+// 
+onEvent("speed", "input", function( ) {
+  spd = getNumber("speed");
+});
+onEvent("stamina", "input", function( ) {
+  stamina = getNumber("stamina");
+});
+onEvent("acceleration", "input", function( ) {
+  acceleration = getNumber("acceleration");
+});
+onEvent("start", "input", function( ) {
+  start = getNumber("start");
+});
+onEvent("strength", "input", function( ) {
+  strength = getNumber("strength");
+});
+onEvent("intelligence", "input", function( ) {
+  intelligence = getNumber("intelligence");
+});
+onEvent("movement", "input", function( ) {
+  movement = getNumber("movement");
+});
+// 
+onEvent("tenacity", "input", function( ) {
+  tenacity = getNumber("tenacity");
+});
+onEvent("enthusiasm", "input", function( ) {
+  enthusiasm = getNumber("enthusiasm");
+});
+onEvent("confidence", "input", function( ) {
+  confidence = getNumber("confidence");
+});
+onEvent("battlingQualities", "input", function( ) {
+  battlingQualities = getNumber("battlingQualities");
+});
+onEvent("cruisingBurst", "input", function( ) {
+  cruisingBurst = getNumber("cruisingBurst");
+});
+onEvent("extraSpeedRating", "input", function( ) {
+  extraSpeedRating = getNumber("extraSpeedRating");
+});
+onEvent("finishApplication", "input", function( ) {
+  finishApplication = getNumber("finishApplication");
+});
+onEvent("consistency", "input", function( ) {
+  consistency = getNumber("consistency");
+});
+onEvent("distanceAdaptability", "input", function( ) {
+  distanceAdaptability = getNumber("distanceAdaptability");
+});
+onEvent("goingSurfaceAdaptability", "input", function( ) {
+  goingSurfaceAdaptability = getNumber("goingSurfaceAdaptability");
+});
+onEvent("quirks", "input", function( ) {
+  quirks = getNumber("quirks");
+});
+// 
+onEvent("simulateButton", "click", function( ) {
+  calculatePerformance();
+  setNumber("performance", actualPerformance);
+});

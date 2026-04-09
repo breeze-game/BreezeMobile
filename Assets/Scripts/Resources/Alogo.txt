@@ -1,0 +1,870 @@
+// package alogo;
+
+import java.util.*;
+
+public class Main {
+
+  // CODE PROJECT PLANNING
+  // options: breed (using import generator function)
+
+  public static void main(String[] args) {
+
+    // set up Scanner object
+    Scanner scan = new Scanner(System.in);
+
+    // set up Array List
+    ArrayList ownedHorses = new ArrayList();
+    ArrayList foundationMares = new ArrayList();
+    ArrayList foundationStallions = new ArrayList();
+
+    // set up variables
+    String foalName = "";
+    String damName = "";
+    String dam = "";
+    String damCoat = "";
+    String damCoatRarity = "";
+    String damModifier = "";
+    String damMarking = "";
+    String damMane = "";
+    String damTail = "";
+    String damNose = "";
+    String sireName = "";
+    String sire = "";
+    String sireMane = "";
+    String sireTail = "";
+    String sireNose = "";
+
+    // set up dam 1/5
+    Horse dam1 = new Horse("Name", "Sire", "Sire Mane", "Sire Tail",
+        "Sire Nose", "Dam", "Dam Coat", "Dam Coat Rarity",
+        "Dam Modifier", "Dam Marking", "Dam Mane", "Dam Tail",
+        "Dam Nose", "Dam Gender", "Dam Coat", "Dam Coat Rarity",
+        "Anomaly", "Mane", "Tail", "Nose");
+    dam1.setName("Adobe");
+    dam1.setSire("Foundation", "N/A", "N/A", "N/A");
+    dam1.setDam("Foundation", "N/A", "N/A", "N/A", "N/A", "N/A", "N/A", "N/A");
+    dam1.setGender("Mare");
+    dam1.randomMane();
+    dam1.randomTail();
+    dam1.randomNose();
+    dam1.randomCoat();
+    dam1.setModifier();
+    dam1.setMarking();
+    dam1.randomAnomaly();
+
+    // set up dam 2/5
+    Horse dam2 = new Horse("Name", "Sire", "Sire Mane", "Sire Tail",
+        "Sire Nose", "Dam", "Dam Coat", "Dam Coat Rarity",
+        "Dam Modifier", "Dam Marking", "Dam Mane", "Dam Tail",
+        "Dam Nose", "Dam Gender", "Dam Coat", "Dam Coat Rarity",
+        "Anomaly", "Mane", "Tail", "Nose");
+    dam2.setName("Eclipse");
+    dam2.setSire("Foundation", "N/A", "N/A", "N/A");
+    dam2.setDam("Foundation", "N/A", "N/A", "N/A", "N/A", "N/A", "N/A", "N/A");
+    dam2.setGender("Mare");
+    dam2.randomMane();
+    dam2.randomTail();
+    dam2.randomNose();
+    dam2.randomCoat();
+    dam2.setModifier();
+    dam2.setMarking();
+    dam2.randomAnomaly();
+
+    // set up dam 3/5
+    Horse dam3 = new Horse("Name", "Sire", "Sire Mane", "Sire Tail",
+        "Sire Nose", "Dam", "Dam Coat", "Dam Coat Rarity",
+        "Dam Modifier", "Dam Marking", "Dam Mane", "Dam Tail",
+        "Dam Nose", "Dam Gender", "Dam Coat", "Dam Coat Rarity",
+        "Anomaly", "Mane", "Tail", "Nose");
+    dam3.setName("Tranquility");
+    dam3.setSire("Foundation", "N/A", "N/A", "N/A");
+    dam3.setDam("Foundation", "N/A", "N/A", "N/A", "N/A", "N/A", "N/A", "N/A");
+    dam3.setGender("Mare");
+    dam3.randomMane();
+    dam3.randomTail();
+    dam3.randomNose();
+    dam3.randomCoat();
+    dam3.setModifier();
+    dam3.setMarking();
+    dam3.randomAnomaly();
+
+    // set up dam 4/5
+    Horse dam4 = new Horse("Name", "Sire", "Sire Mane", "Sire Tail",
+        "Sire Nose", "Dam", "Dam Coat", "Dam Coat Rarity",
+        "Dam Modifier", "Dam Marking", "Dam Mane", "Dam Tail",
+        "Dam Nose", "Dam Gender", "Dam Coat", "Dam Coat Rarity",
+        "Anomaly", "Mane", "Tail", "Nose");
+    dam4.setName("Wildfire");
+    dam4.setSire("Foundation", "N/A", "N/A", "N/A");
+    dam4.setDam("Foundation", "N/A", "N/A", "N/A", "N/A", "N/A", "N/A", "N/A");
+    dam4.setGender("Mare");
+    dam4.randomMane();
+    dam4.randomTail();
+    dam4.randomNose();
+    dam4.randomCoat();
+    dam4.setModifier();
+    dam4.setMarking();
+    dam4.randomAnomaly();
+
+    // set up dam 5/5
+    Horse dam5 = new Horse("Name", "Sire", "Sire Mane", "Sire Tail",
+        "Sire Nose", "Dam", "Dam Coat", "Dam Coat Rarity",
+        "Dam Modifier", "Dam Marking", "Dam Mane", "Dam Tail",
+        "Dam Nose", "Dam Gender", "Dam Coat", "Dam Coat Rarity",
+        "Anomaly", "Mane", "Tail", "Nose");
+    dam5.setName("Zahara");
+    dam5.setSire("Foundation", "N/A", "N/A", "N/A");
+    dam5.setDam("Foundation", "N/A", "N/A", "N/A", "N/A", "N/A", "N/A", "N/A");
+    dam5.setGender("Mare");
+    dam5.randomMane();
+    dam5.randomTail();
+    dam5.randomNose();
+    dam5.randomCoat();
+    dam5.setModifier();
+    dam5.setMarking();
+    dam5.randomAnomaly();
+
+    // set up sire 1/5
+    Horse sire1 = new Horse("Name", "Sire", "Sire Mane", "Sire Tail",
+        "Sire Nose", "Dam", "Dam Coat", "Dam Coat Rarity",
+        "Dam Modifier", "Dam Marking", "Dam Mane", "Dam Tail",
+        "Dam Nose", "Dam Gender", "Dam Coat", "Dam Coat Rarity",
+        "Anomaly", "Mane", "Tail", "Nose");
+    sire1.setName("Goliath");
+    sire1.setSire("Foundation", "N/A", "N/A", "N/A");
+    sire1.setDam("Foundation", "N/A", "N/A", "N/A", "N/A", "N/A", "N/A", "N/A");
+    sire1.setGender("Stallion");
+    sire1.randomMane();
+    sire1.randomTail();
+    sire1.randomNose();
+    sire1.randomCoat();
+    sire1.setModifier();
+    sire1.setMarking();
+    sire1.randomAnomaly();
+
+    // set up sire 2/5
+    Horse sire2 = new Horse("Name", "Sire", "Sire Mane", "Sire Tail",
+        "Sire Nose", "Dam", "Dam Coat", "Dam Coat Rarity",
+        "Dam Modifier", "Dam Marking", "Dam Mane", "Dam Tail",
+        "Dam Nose", "Dam Gender", "Dam Coat", "Dam Coat Rarity",
+        "Anomaly", "Mane", "Tail", "Nose");
+    sire2.setName("Milo");
+    sire2.setSire("Foundation", "N/A", "N/A", "N/A");
+    sire2.setDam("Foundation", "N/A", "N/A", "N/A", "N/A", "N/A", "N/A", "N/A");
+    sire2.setGender("Stallion");
+    sire2.randomMane();
+    sire2.randomTail();
+    sire2.randomNose();
+    sire2.randomCoat();
+    sire2.setModifier();
+    sire2.setMarking();
+    sire2.randomAnomaly();
+
+    // set up sire 3/5
+    Horse sire3 = new Horse("Name", "Sire", "Sire Mane", "Sire Tail",
+        "Sire Nose", "Dam", "Dam Coat", "Dam Coat Rarity",
+        "Dam Modifier", "Dam Marking", "Dam Mane", "Dam Tail",
+        "Dam Nose", "Dam Gender", "Dam Coat", "Dam Coat Rarity",
+        "Anomaly", "Mane", "Tail", "Nose");
+    sire3.setName("Moondance");
+    sire3.setSire("Foundation", "N/A", "N/A", "N/A");
+    sire3.setDam("Foundation", "N/A", "N/A", "N/A", "N/A", "N/A", "N/A", "N/A");
+    sire3.setGender("Stallion");
+    sire3.randomMane();
+    sire3.randomTail();
+    sire3.randomNose();
+    sire3.randomCoat();
+    sire3.setModifier();
+    sire3.setMarking();
+    sire3.randomAnomaly();
+
+    // set up sire 4/5
+    Horse sire4 = new Horse("Name", "Sire", "Sire Mane", "Sire Tail",
+        "Sire Nose", "Dam", "Dam Coat", "Dam Coat Rarity",
+        "Dam Modifier", "Dam Marking", "Dam Mane", "Dam Tail",
+        "Dam Nose", "Dam Gender", "Dam Coat", "Dam Coat Rarity",
+        "Anomaly", "Mane", "Tail", "Nose");
+    sire4.setName("Otto");
+    sire4.setSire("Foundation", "N/A", "N/A", "N/A");
+    sire4.setDam("Foundation", "N/A", "N/A", "N/A", "N/A", "N/A", "N/A", "N/A");
+    sire4.setGender("Stallion");
+    sire4.randomMane();
+    sire4.randomTail();
+    sire4.randomNose();
+    sire4.randomCoat();
+    sire4.setModifier();
+    sire4.setMarking();
+    sire4.randomAnomaly();
+
+    // set up sire 5/5
+    Horse sire5 = new Horse("Name", "Sire", "Sire Mane", "Sire Tail",
+        "Sire Nose", "Dam", "Dam Coat", "Dam Coat Rarity",
+        "Dam Modifier", "Dam Marking", "Dam Mane", "Dam Tail",
+        "Dam Nose", "Dam Gender", "Dam Coat", "Dam Coat Rarity",
+        "Anomaly", "Mane", "Tail", "Nose");
+    sire5.setName("Razuli");
+    sire5.setSire("Foundation", "N/A", "N/A", "N/A");
+    sire5.setDam("Foundation", "N/A", "N/A", "N/A", "N/A", "N/A", "N/A", "N/A");
+    sire5.setGender("Stallion");
+    sire5.randomMane();
+    sire5.randomTail();
+    sire5.randomNose();
+    sire5.randomCoat();
+    sire5.setModifier();
+    sire5.setMarking();
+    sire5.randomAnomaly();
+
+    // add horse objects to arrays
+    foundationMares.add(dam1);
+    foundationMares.add(dam2);
+    foundationMares.add(dam3);
+    foundationMares.add(dam4);
+    foundationMares.add(dam5);
+    foundationStallions.add(sire1);
+    foundationStallions.add(sire2);
+    foundationStallions.add(sire3);
+    foundationStallions.add(sire4);
+    foundationStallions.add(sire5);
+
+    // give info
+    System.out.println("\nWelcome! Here you will create your first Alogo (breed) horse. "
+        + "You may choose the parents of your horse."
+        + "\nEnter \"stop\" at any time to quit.");
+    System.out.println("\nYou must enter the name of the mare and stallion you "
+        + "would like a foal from. Then, you can name your new horse.");
+
+    // if "stop" is entered, program will stop
+    while (!(damName.equals("stop") || sireName.equals("stop") || foalName.equals("stop"))) {
+
+      // give info
+      System.out.println("\n\nThe list of mares to choose from will be listed below.\n");
+
+      // output info of foundation mares
+      System.out.println(foundationMares);
+
+      // create switch statement
+      while (!(damName.equals("adobe") || damName.equals("eclipse") || damName.equals("tranquility")
+          || damName.equals("wildfire") || damName.equals("zahara"))) {
+
+        // ask for input of mare
+        System.out.print("\nEnter mare: ");
+        damName = scan.next().toLowerCase();
+
+        switch (damName) {
+          case "adobe":
+            dam = dam1.getName();
+            damCoat = dam1.getCoat();
+            damCoatRarity = dam1.getCoatRarity();
+            damModifier = dam1.getModifier();
+            damMarking = dam1.getMarking();
+            damMane = dam1.getMane();
+            damTail = dam1.getTail();
+            damNose = dam1.getNose();
+            break;
+          case "eclipse":
+            dam = dam2.getName();
+            damCoat = dam2.getCoat();
+            damCoatRarity = dam2.getCoatRarity();
+            damModifier = dam2.getModifier();
+            damMarking = dam2.getMarking();
+            damMane = dam2.getMane();
+            damTail = dam2.getTail();
+            damNose = dam2.getNose();
+            break;
+          case "tranquility":
+            dam = dam3.getName();
+            damCoat = dam3.getCoat();
+            damCoatRarity = dam3.getCoatRarity();
+            damModifier = dam3.getModifier();
+            damMarking = dam3.getMarking();
+            damMane = dam3.getMane();
+            damTail = dam3.getTail();
+            damNose = dam3.getNose();
+            break;
+          case "wildfire":
+            dam = dam4.getName();
+            damCoat = dam4.getCoat();
+            damCoatRarity = dam4.getCoatRarity();
+            damModifier = dam4.getModifier();
+            damMarking = dam4.getMarking();
+            damMane = dam4.getMane();
+            damTail = dam4.getTail();
+            damNose = dam4.getNose();
+            break;
+          case "zahara":
+            dam = dam5.getName();
+            damCoat = dam5.getCoat();
+            damCoatRarity = dam5.getCoatRarity();
+            damModifier = dam5.getModifier();
+            damMarking = dam5.getMarking();
+            damMane = dam5.getMane();
+            damTail = dam5.getTail();
+            damNose = dam5.getNose();
+            break;
+          case "stop":
+            return;
+          default:
+            System.out.println("Invalid name.");
+        }
+      }
+
+      // give info
+      System.out.println("\n\nThe list of stallions to choose from will be listed below.\n");
+
+      // output info of foundation stallions
+      System.out.println(foundationStallions);
+
+      // create switch statement
+      while (!(sireName.equals("goliath") || sireName.equals("milo") || sireName.equals("moondance")
+          || sireName.equals("otto") || sireName.equals("razuli"))) {
+
+        // ask for input of stallion
+        System.out.print("\nEnter stallion: ");
+        sireName = scan.next().toLowerCase();
+
+        switch (sireName) {
+          case "goliath":
+            sire = sire1.getName();
+            sireMane = sire1.getMane();
+            sireTail = sire1.getTail();
+            sireNose = sire1.getNose();
+            break;
+          case "milo":
+            sire = sire2.getName();
+            sireMane = sire2.getMane();
+            sireTail = sire2.getTail();
+            sireNose = sire2.getNose();
+            break;
+          case "moondance":
+            sire = sire3.getName();
+            sireMane = sire3.getMane();
+            sireTail = sire3.getTail();
+            sireNose = sire3.getNose();
+            break;
+          case "otto":
+            sire = sire4.getName();
+            sireMane = sire4.getMane();
+            sireTail = sire4.getTail();
+            sireNose = sire4.getNose();
+            break;
+          case "razuli":
+            sire = sire5.getName();
+            sireMane = sire5.getMane();
+            sireTail = sire5.getTail();
+            sireNose = sire5.getNose();
+            break;
+          case "stop":
+            return;
+          default:
+            System.out.println("Invalid name.");
+        }
+      }
+
+      // ask for input of foal name
+      System.out.println("\nNow, name your foal!");
+      System.out.print("Enter name: ");
+      foalName = scan.next();
+
+      // set up foal
+      Horse foal = new Horse("Name", "Sire", "Sire Mane", "Sire Tail",
+          "Sire Nose", "Dam", "Dam Coat", "Dam Coat Rarity",
+          "Dam Modifier", "Dam Marking", "Dam Mane", "Dam Tail",
+          "Dam Nose", "Dam Gender", "Dam Coat", "Dam Coat Rarity",
+          "Anomaly", "Mane", "Tail", "Nose");
+      foal.setName(foalName);
+      foal.setSire(sire, sireMane, sireTail, sireNose);
+      foal.setDam(dam, damCoat, damCoatRarity, damModifier, damMarking, damMane, damTail, damNose);
+      foal.randomGender();
+      foal.determineCoat();
+      foal.determineModifier();
+      foal.determineMarking();
+      foal.determineMane();
+      foal.determineTail();
+      foal.determineNose();
+      foal.randomAnomaly();
+
+      // add horse object to array
+      ownedHorses.add(foal);
+
+      // give info
+      System.out.println("\n\nThe list of owned horses will be listed below.\n");
+
+      // output info of owned horses
+      System.out.println(ownedHorses);
+
+      // reset inputs
+      damName = "";
+      sireName = "";
+      foalName = "";
+    }
+  }
+}
+
+class Horse {
+
+  // set up variables
+  private String name;
+  private String sire;
+  private String sireMane;
+  private String sireTail;
+  private String sireNose;
+  private String dam;
+  private String damCoat;
+  private String damCoatRarity;
+  private String damModifier;
+  private String damMarking;
+  private String damMane;
+  private String damTail;
+  private String damNose;
+  private String gender;
+  private String coat;
+  private String coatRarity;
+  private String modifierResult;
+  private ArrayList<String> modifier = new ArrayList<String>();
+  private String markingResult;
+  private ArrayList<String> marking = new ArrayList<String>();
+  private String anomaly;
+  private String mane;
+  private String tail;
+  private String nose;
+  private int min;
+  private int max;
+  private int result;
+
+  // set up all options
+  String[] genderOptions = { "colt", "filly" };
+
+  String[] oneStar_maneOptions = { "* medium" };
+  String[] twoStar_maneOptions = { "** cropped", "** short" };
+  String[] threeStar_maneOptions = { "*** long curly", "*** long straight" };
+
+  String[] oneStar_tailOptions = { "* medium" };
+  String[] twoStar_tailOptions = { "** long straight", "** short" };
+  String[] threeStar_tailOptions = { "*** long curly", "*** cropped" };
+
+  String[] oneStar_noseOptions = { "* evident" };
+  String[] twoStar_noseOptions = { "** subtle" };
+  String[] threeStar_noseOptions = { "*** extreme" };
+
+  String[] oneStar_coats = { "* bay", "* dark bay", "* chestnut", "* gray" };
+  String[] twoStar_coats = { "** liver chestnut", "** seal brown", "** buckskin", "** palomino", "** smoky black" };
+  String[] threeStar_coats = { "*** black", "*** smoky cream", "*** cremello", "*** perlino" };
+
+  String[] oneStar_modifiers = { "none" };
+  String[] twoStar_modifiers = { "** gray", "** flaxen" };
+  String[] threeStar_modifiers = { "*** roan", "*** sooty" };
+
+  String[] oneStar_markings = { "none" };
+  String[] twoStar_markings = { "** sabino", "** splash", "** dominant white" };
+  String[] threeStar_markings = { "*** overo", "*** tobiano", "*** rabicano" };
+
+  String[] anomalyOptions = { "*** birdcatcher spots", "*** bend-or spots", "*** chubari spots (gray only)",
+      "*** bloody shoulder (gray only)", "*** gulastra plume (sabino only)", "*** badger face (sabino only)",
+      "*** chimera", "*** somatic mutation", "*** brindle", "*** reverse brindle", "*** manchado" };
+
+  // create constructor for Horse class
+  public Horse(String inName, String inSire, String inSireMane,
+      String inSireTail, String inSireNose, String inDam,
+      String inDamCoat, String inDamCoatRarity, String inDamModifier,
+      String inDamMarking, String inDamMane, String inDamTail,
+      String inDamNose, String inGender, String inCoat,
+      String inCoatRarity, String inAnomaly, String inMane,
+      String inTail, String inNose) {
+    name = inName;
+    sire = inSire;
+    sireMane = inSireMane;
+    sireTail = inSireTail;
+    sireNose = inSireNose;
+    dam = inDam;
+    damCoat = inDamCoat;
+    damCoatRarity = inDamCoatRarity;
+    damModifier = inDamModifier;
+    damMarking = inDamMarking;
+    damMane = inDamMane;
+    damTail = inDamTail;
+    damNose = inDamNose;
+    gender = inGender;
+    coat = inCoat;
+    coatRarity = inCoatRarity;
+    anomaly = inAnomaly;
+    mane = inMane;
+    tail = inTail;
+    nose = inNose;
+  }
+
+  // set name
+  public void setName(String inName) {
+    name = inName;
+  }
+
+  // set sire
+  public void setSire(String inSire, String inMane, String inTail, String inNose) {
+    sire = inSire;
+    sireMane = inMane;
+    sireTail = inTail;
+    sireNose = inNose;
+  }
+
+  // set dam
+  public void setDam(String inDam, String inCoat, String inRarity,
+      String inModifier, String inMarking, String inMane, String inTail,
+      String inNose) {
+    dam = inDam;
+    damCoat = inCoat;
+    damCoatRarity = inRarity;
+    damModifier = inModifier;
+    damMarking = inMarking;
+    damMane = inMane;
+    damTail = inTail;
+    damNose = inNose;
+  }
+
+  // set gender
+  public void setGender(String inGender) {
+    gender = inGender;
+  }
+
+  // set random gender
+  public void randomGender() {
+    max = 1;
+    min = 0;
+    result = (int) (Math.floor(Math.random() * (max - min + 1) + min));
+    gender = genderOptions[result];
+  }
+
+  // determine if coat is hereditary or random
+  public void determineCoat() {
+    // sets a coat and a rarity
+    randomCoat();
+    max = 1;
+    min = 0;
+    result = (int) (Math.floor(Math.random() * (max - min + 1) + min));
+    if (damCoatRarity.equals(coatRarity)) {
+      switch (result) {
+        case 0:
+          // overrides original random coat
+          coat = damCoat;
+          break;
+      }
+    }
+  }
+
+  // determine if modifiers are hereditary or random
+  public void determineModifier() {
+    // sets a modifier
+    randomModifier();
+    modifier.add(modifierResult);
+    max = 1;
+    min = 0;
+    result = (int) (Math.floor(Math.random() * (max - min + 1) + min));
+    switch (result) {
+      case 0:
+        modifier.add(damModifier);
+        break;
+    }
+  }
+
+  // determine if markings are hereditary or random
+  public void determineMarking() {
+    // sets a marking
+    randomMarking();
+    marking.add(markingResult);
+    max = 4;
+    min = 1;
+    result = (int) (Math.floor(Math.random() * (max - min + 1) + min));
+    if (result == 1) {
+      marking.add(damMarking);
+    }
+  }
+
+  // determine if mane is hereditary or random
+  public void determineMane() {
+    max = 100;
+    min = 1;
+    result = (int) (Math.floor(Math.random() * (max - min + 1) + min));
+    // hereditary 25% chance
+    if (result <= 25) {
+      result = (int) (Math.floor(Math.random() * (max - min + 1) + min));
+      if (result <= 25) {
+        mane = sireMane;
+      } else if (result <= 100) {
+        mane = damMane;
+      }
+      // random 75% chance
+    } else if (result <= 100) {
+      randomMane();
+    }
+  }
+
+  // determine if tail is hereditary or random
+  public void determineTail() {
+    max = 100;
+    min = 1;
+    result = (int) (Math.floor(Math.random() * (max - min + 1) + min));
+    // hereditary 25% chance
+    if (result <= 25) {
+      result = (int) (Math.floor(Math.random() * (max - min + 1) + min));
+      if (result <= 25) {
+        tail = sireTail;
+      } else if (result <= 100) {
+        tail = damTail;
+      }
+      // random 75% chance
+    } else if (result <= 100) {
+      randomTail();
+    }
+  }
+
+  // determine if roman nose is hereditary or random
+  public void determineNose() {
+    max = 100;
+    min = 1;
+    result = (int) (Math.floor(Math.random() * (max - min + 1) + min));
+    // hereditary 25% chance
+    if (result <= 25) {
+      result = (int) (Math.floor(Math.random() * (max - min + 1) + min));
+      if (result <= 25) {
+        nose = sireNose;
+      } else if (result <= 100) {
+        nose = damNose;
+      }
+      // random 75% chance
+    } else if (result <= 100) {
+      randomNose();
+    }
+  }
+
+  // set random mane style
+  public void randomMane() {
+    max = 100;
+    min = 1;
+    result = (int) (Math.floor(Math.random() * (max - min + 1) + min));
+    if (result <= 5) {
+      mane = threeStar_maneOptions[0];
+    } else if (result <= 10) {
+      mane = threeStar_maneOptions[1];
+    } else if (result <= 20) {
+      mane = twoStar_maneOptions[0];
+    } else if (result <= 30) {
+      mane = twoStar_maneOptions[1];
+    } else if (result <= 100) {
+      mane = oneStar_maneOptions[0];
+    }
+  }
+
+  // set random tail style
+  public void randomTail() {
+    max = 100;
+    min = 1;
+    result = (int) (Math.floor(Math.random() * (max - min + 1) + min));
+    if (result <= 5) {
+      tail = threeStar_tailOptions[0];
+    } else if (result <= 10) {
+      tail = threeStar_tailOptions[1];
+    } else if (result <= 20) {
+      tail = twoStar_tailOptions[0];
+    } else if (result <= 30) {
+      tail = twoStar_tailOptions[1];
+    } else if (result <= 100) {
+      tail = oneStar_tailOptions[0];
+    }
+  }
+
+  // set random roman nose style
+  public void randomNose() {
+    max = 100;
+    min = 1;
+    result = (int) (Math.floor(Math.random() * (max - min + 1) + min));
+    if (result <= 5) {
+      nose = threeStar_noseOptions[0];
+    } else if (result <= 20) {
+      nose = twoStar_noseOptions[0];
+    } else if (result <= 100) {
+      nose = oneStar_noseOptions[0];
+    }
+  }
+
+  // set random coat
+  public void randomCoat() {
+    max = 100;
+    min = 1;
+    result = (int) (Math.floor(Math.random() * (max - min + 1) + min));
+    if (result <= 5) {
+      chooseRandom_coat(threeStar_coats.length, threeStar_coats);
+      coatRarity = "***";
+    } else if (result <= 25) {
+      chooseRandom_coat(twoStar_coats.length, twoStar_coats);
+      coatRarity = "**";
+    } else if (result <= 100) {
+      chooseRandom_coat(oneStar_coats.length, oneStar_coats);
+      coatRarity = "*";
+    }
+  }
+
+  // set modifier
+  public void setModifier() {
+    randomModifier();
+    modifier.add(modifierResult);
+  }
+
+  // set random modifier
+  public void randomModifier() {
+    max = 100;
+    min = 1;
+    result = (int) (Math.floor(Math.random() * (max - min + 1) + min));
+    if (result <= 5) {
+      chooseRandom_modifierResult(threeStar_modifiers.length, threeStar_modifiers);
+    } else if (result <= 30) {
+      chooseRandom_modifierResult(twoStar_modifiers.length, twoStar_modifiers);
+    } else if (result <= 100) {
+      chooseRandom_modifierResult(oneStar_modifiers.length, oneStar_modifiers);
+    }
+  }
+
+  // set marking
+  public void setMarking() {
+    randomMarking();
+    marking.add(markingResult);
+  }
+
+  // set random marking
+  public void randomMarking() {
+    max = 100;
+    min = 1;
+    result = (int) (Math.floor(Math.random() * (max - min + 1) + min));
+    if (result <= 5) {
+      chooseRandom_markingResult(threeStar_markings.length, threeStar_markings);
+    } else if (result <= 15) {
+      chooseRandom_markingResult(twoStar_markings.length, twoStar_markings);
+    } else if (result <= 100) {
+      chooseRandom_markingResult(oneStar_markings.length, oneStar_markings);
+    }
+  }
+
+  // set random anomaly
+  public void randomAnomaly() {
+    max = 100;
+    min = 1;
+    result = (int) (Math.floor(Math.random() * (max - min + 1) + min));
+    switch (result) {
+      case 1:
+        chooseRandom_anomaly(anomalyOptions.length, anomalyOptions);
+        break;
+      default:
+        anomaly = "N/A";
+    }
+  }
+
+  // get name
+  public String getName() {
+    return name;
+  }
+
+  // get sire
+  public String getSire() {
+    return sire;
+  }
+
+  // get dam
+  public String getDam() {
+    return dam;
+  }
+
+  // get gender
+  public String getGender() {
+    return gender;
+  }
+
+  // get mane
+  public String getMane() {
+    return mane;
+  }
+
+  // get tail
+  public String getTail() {
+    return tail;
+  }
+
+  // get nose
+  public String getNose() {
+    return nose;
+  }
+
+  // get coat
+  public String getCoat() {
+    return coat;
+  }
+
+  // get coat rarity
+  public String getCoatRarity() {
+    return coatRarity;
+  }
+
+  // get modifier
+  public String getModifier() {
+    /*
+     * for (int i = 0; i <= (modifier.size() - 1); i++) {
+     * return modifier.get(i);
+     * }
+     */
+    String modifierList;
+    return modifierList = String.join(", ", modifier);
+  }
+
+  // get marking
+  public String getMarking() {
+    /*
+     * for (int i = 0; i <= (marking.size() - 1); i++) {
+     * return marking.get(i);
+     * }
+     */
+    String markingList;
+    return markingList = String.join(", ", marking);
+  }
+
+  // get anomaly
+  public String getAnomaly() {
+    return anomaly;
+  }
+
+  // chooses a random index of a given array to be stored as coat
+  public void chooseRandom_coat(int inMax, String inArray[]) {
+    max = inMax - 1;
+    min = 0;
+    result = (int) (Math.floor(Math.random() * (max - min + 1) + min));
+    coat = inArray[result];
+  }
+
+  // chooses a random index of a given array to be stored as modifier
+  public void chooseRandom_modifierResult(int inMax, String inArray[]) {
+    max = inMax - 1;
+    min = 0;
+    result = (int) (Math.floor(Math.random() * (max - min + 1) + min));
+    modifierResult = inArray[result];
+  }
+
+  // chooses a random index of a given array to be stored as markingResult
+  public void chooseRandom_markingResult(int inMax, String inArray[]) {
+    max = inMax - 1;
+    min = 0;
+    result = (int) (Math.floor(Math.random() * (max - min + 1) + min));
+    markingResult = inArray[result];
+  }
+
+  // chooses a random index of a given array to be stored as anomaly
+  public void chooseRandom_anomaly(int inMax, String inArray[]) {
+    max = inMax - 1;
+    min = 0;
+    result = (int) (Math.floor(Math.random() * (max - min + 1) + min));
+    anomaly = inArray[result];
+  }
+
+  // create a public method to return printed statement using inputs
+  public String toString() {
+    return "\nName: " + name + " | Sire: " + sire + " | Dam: " + dam +
+        " | Gender: " + gender + " | Coat: " + coat +
+        " | Modifier: " + modifier + " | Marking: " + marking +
+        " | Anomaly: " + anomaly + " | Mane: " + mane +
+        " | Tail: " + tail + " | Nose: " + nose;
+  }
+}

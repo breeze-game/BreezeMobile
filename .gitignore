@@ -57,6 +57,10 @@ ExportedObj/
 # Unity3D generated file on crash reports
 sysinfo.txt
 
+# Local notes context
+/[Aa]ssets/[Ss]cripts/[Rr]esources/context.txt
+/[Aa]ssets/[Ss]cripts/[Rr]esources/context.txt.meta
+
 # Builds
 *.apk
 *.aab
