@@ -4,7 +4,7 @@ using UnityEngine;
 public class BreedingSession : MonoBehaviour
 {
     // breeding pool size
-    [Header("Session parent pool size")]
+    [Header("Parent Pool Size")]
     [SerializeField] int poolSizeEach = 6; // number of horses in each breeding pool
 
     // breeding pool lists
