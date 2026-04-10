@@ -1,0 +1,27 @@
+Create a mobile game deployed on a device, either android or iOS.  This can be a tablet or phone.
+
+Given the limited time it is not expected to make a "fun" game, we will focus on that later. The focus for this task should be experimentation on using 3 mobile specific inputs. As this is a shorter assignment, focus on art or gameplay should be a low priority.
+
+Examples of mobile input:
+
+Swipe.
+Two finger pinch/zoom.
+Onscreen "D-pad".
+Press duration.
+Single/double/triple tap.
+?
+The 3 mobile inputs should have feedback, which is obvious for pinch/zoom, however for press duration a bar or circle filling would be an example of feedback.
+
+Rubric:
+
+Runs on device: 45%
+3 Types of Mobile Input: 45%
+Gameplay/art/sound/fun: 10%
+Although I'm comfortable with reviewing using the "Unity Remote" app, 5% extra credit for using the app standalone. For grad students this is a requirement.
+
+Review will be in class.
+
+Links to get you started:
+
+Android: https://docs.unity3d.com/Manual/android-sdksetup.htmlLinks to an external site.
+Apple: https://docs.unity3d.com/Manual/iphone-GettingStarted.html

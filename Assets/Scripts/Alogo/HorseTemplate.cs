@@ -33,8 +33,8 @@ public class HorseTemplate
     public int realizedPotential = 80;
     public int fitness = 80;
     public int reputation = 500;
-    public int condition = 70;
-    public int conditionPercent = 85;
+    public int condition = 70; // "form"
+    public int conditionPercent = 85; // "condition"
     // core
     public int spd = 10;
     public int stamina = 10;

@@ -58,8 +58,8 @@ ExportedObj/
 sysinfo.txt
 
 # Local notes context
-/[Aa]ssets/[Ss]cripts/[Rr]esources/context.txt
-/[Aa]ssets/[Ss]cripts/[Rr]esources/context.txt.meta
+/[Aa]ssets/[Ss]cripts/[Rr]esources/context.md
+/[Aa]ssets/[Ss]cripts/[Rr]esources/context.md.meta
 
 # Builds
 *.apk

@@ -13,6 +13,10 @@ public class BreedingTouchInput : MonoBehaviour, IPointerDownHandler, IPointerUp
     [SerializeField] float multiTapWindow = 0.4f; // time window for multiple taps
     [SerializeField] float tapMoveTolerance = 30f; // tolerance for tap movement
 
+    // optional: assign menu from scene; if empty, we find it at runtime (double-tap opens it)
+    [Header("Help menu (double-tap background)")]
+    [SerializeField] HelpMenu helpMenu;
+
     // event for double tap
     [Header("Events")]
     public UnityEvent onDoubleTap; // create a new event for double tap
@@ -83,30 +87,41 @@ public class BreedingTouchInput : MonoBehaviour, IPointerDownHandler, IPointerUp
         // wait for the multi tap window to expire
         yield return new WaitForSecondsRealtime(multiTapWindow);
 
+        // double tap = help menu (controls, reset pools button, quit, X)
         // check if the exact tap count is 2 for a double tap
         if (tapCount == 2)
         {
             // confirm that it is a double tap
-            Debug.Log("DOUBLE TAP DETECTED");
+            Debug.Log("DOUBLE TAP DETECTED — help menu");
 
             // invoke the double tap event (trigger the Controls overlay toggle)
-            onDoubleTap?.Invoke();
+            //onDoubleTap?.Invoke();
 
             // reset after double tap action
             //tapCount = 0;
+
+            var menu = helpMenu != null
+                ? helpMenu
+                : FindAnyObjectByType<HelpMenu>(FindObjectsInactive.Include);
+            if (menu != null)
+                menu.Open();
         }
         // check if the tap count is 3 or more for a triple tap
+        // triple tap = reroll mares + stallions for this session
         else if (tapCount >= 3)
         {
             // confirm that it is a triple tap
-            Debug.Log("TRIPLE TAP DETECTED");
+            Debug.Log("TRIPLE TAP DETECTED — reset pools");
 
             // triple tap will trigger the reroll of available breeding horse pools
             // regenerate the possible parent horses
-            session.RegeneratePools();
+            //session.RegeneratePools();
 
             // reset after triple tap action
             //tapCount = 0;
+
+            if (session != null)
+                session.RegeneratePools();
         }
 
         // reset after tap action is resolved

@@ -155,7 +155,7 @@ Camera:
   m_GameObject: {fileID: 330585543}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 2
+  m_ClearFlags: 1
   m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
@@ -546,10 +546,8 @@ MonoBehaviour:
   session: {fileID: 1093466873}
   asciiFont: {fileID: 0}
   horseGlyphFont: {fileID: 11400000, guid: 01236cfbe95d3b144a34257b42d12e68, type: 2}
-  noOwnedYetGlyphFont: {fileID: 11400000, guid: 94acba8f755a9e84db30be70a07e5aa2, type: 2}
   raceFurlongs: 8
   horseIconFontSize: 88
-  horseStatsFontSize: 20
 --- !u!1 &1138798614
 GameObject:
   m_ObjectHideFlags: 0
