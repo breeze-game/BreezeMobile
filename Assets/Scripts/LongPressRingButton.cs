@@ -3,17 +3,13 @@ using UnityEngine.Events;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-// long press with radial ring fill (Image Type = Filled, Radial 360)
 public class LongPressRingButton : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IPointerExitHandler
 {
-    // how long to hold (seconds)
-    [SerializeField] float holdSeconds = 0.75f;
-    // ring image (child or same object)
-    [SerializeField] Image ringFill;
-    // fires when hold completes
-    [SerializeField] UnityEvent onHoldComplete;
+    // variables for long press functionality
+    [SerializeField] float holdSeconds = 0.75f; // how long to hold in seconds
+    [SerializeField] Image ringFill; // the radial ring fill image
+    [SerializeField] UnityEvent onHoldComplete; // event for when the hold is completed
 
-    // unity does not serialize a new UnityEvent on AddComponent at runtime; must init here
     void Awake()
     {
         EnsureHoldEvent();

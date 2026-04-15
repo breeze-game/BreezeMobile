@@ -12,6 +12,7 @@ public class HelpMenu : MonoBehaviour
     BreedingSession session;
     // refresh main ui after reset
     BreedingUIBuilder uiBuilder;
+    TMP_FontAsset _menuFont;
 
     // white 1x1 for ui images
     static Sprite _white;
@@ -29,14 +30,21 @@ public class HelpMenu : MonoBehaviour
     bool built;
 
     // called once from BreedingUIBuilder after this component is added
-    public void Initialize(BreedingSession breedingSession, BreedingUIBuilder builder)
+    public void Initialize(BreedingSession breedingSession, BreedingUIBuilder builder, TMP_FontAsset menuFont = null)
     {
         if (built) return;
         built = true;
         session = breedingSession;
         uiBuilder = builder;
+        _menuFont = menuFont;
         BuildUi();
         gameObject.SetActive(false);
+    }
+
+    void ApplyMenuFont(TextMeshProUGUI tmp)
+    {
+        if (tmp != null && _menuFont != null)
+            tmp.font = _menuFont;
     }
 
     void StretchFull(RectTransform rt)
@@ -109,6 +117,7 @@ public class HelpMenu : MonoBehaviour
         titleTmp.fontStyle = FontStyles.Bold;
         titleTmp.alignment = TextAlignmentOptions.Left;
         titleTmp.color = Color.white;
+        ApplyMenuFont(titleTmp);
 
         // controls body
         var bodyGo = new GameObject("ControlsBody", typeof(RectTransform), typeof(TextMeshProUGUI));
@@ -130,6 +139,7 @@ public class HelpMenu : MonoBehaviour
         bodyTmp.alignment = TextAlignmentOptions.TopLeft;
         bodyTmp.color = new Color(0.92f, 0.92f, 0.92f);
         bodyTmp.textWrappingMode = TextWrappingModes.Normal;
+        ApplyMenuFont(bodyTmp);
 
         // reset pools row
         AddMenuButton(panel.transform, "ResetBreedingPoolsBtn", "reset session pools (new mares/stallions)",
@@ -163,6 +173,7 @@ public class HelpMenu : MonoBehaviour
         tmp.alignment = TextAlignmentOptions.Center;
         tmp.color = Color.white;
         tmp.raycastTarget = false;
+        ApplyMenuFont(tmp);
     }
 
     void OnResetPools()

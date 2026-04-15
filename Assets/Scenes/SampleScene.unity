@@ -506,7 +506,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a56b5a441e0464441944bcdd6b2e9bdd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BreedingSession
-  poolSizeEach: 6
   mares: []
   stallions: []
   mareIndex: 0
@@ -516,6 +515,7 @@ MonoBehaviour:
   onPoolsChanged:
     m_PersistentCalls:
       m_Calls: []
+  racePreviewFurlongs: 8
 --- !u!4 &1093466874
 Transform:
   m_ObjectHideFlags: 0
@@ -544,7 +544,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BreedingUIBuilder
   session: {fileID: 1093466873}
-  asciiFont: {fileID: 0}
+  primaryTextFont: {fileID: 11400000, guid: ce02ab7df4f7fcf4d941196a63148ee3, type: 2}
+  symbolsFallbackFont: {fileID: 11400000, guid: 92b92eba3f5c8d84fa92635032848415, type: 2}
   horseGlyphFont: {fileID: 11400000, guid: 01236cfbe95d3b144a34257b42d12e68, type: 2}
   noOwnedYetGlyphFont: {fileID: 11400000, guid: 94acba8f755a9e84db30be70a07e5aa2, type: 2}
   raceFurlongs: 8

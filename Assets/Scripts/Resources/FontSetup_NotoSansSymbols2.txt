@@ -1,0 +1,53 @@
+BreezeMobile — Noto Sans Symbols 2 + ★ (U+2605) for TMP
+
+1) IMPORT THE FONT FILE
+   - In Windows Explorer, copy your downloaded Noto Sans Symbols 2 .ttf (e.g. NotoSansSymbols2-Regular.ttf).
+   - Drag it into the Unity Project window, for example:
+     Assets/Fonts/NotoSansSymbols2/
+
+2) CREATE A TEXTMESHPRO SDF ASSET
+   - Menu: Window → TextMeshPro → Font Asset Creator
+   - "Source Font File": select the Noto Sans Symbols 2 TTF you imported.
+   - Sampling Point Size: 48–72 (higher = sharper at large UI sizes; larger atlas).
+   - Padding: 5
+   - Atlas Resolution: 1024 or 2048
+   - Character Set: Custom Characters
+   - Custom Character List: paste a black star: ★
+     (That is Unicode U+2605. You can add more symbols later and regenerate.)
+   - Generate Font Atlas → Save, e.g.:
+     Assets/Fonts/NotoSansSymbols2/NotoSansSymbols2-Regular SDF.asset
+
+3) MAKE ★ SHOW UP (pick ONE or both)
+
+   A) FALLBACK ON YOUR MAIN FONT (recommended)
+   - Select the TMP Font Asset you use for horse stats (BreedingUIBuilder → Ascii Font).
+   - In the Inspector, find "Fallback Font Assets" (or similar list on the font asset).
+   - Add an element and drag your NotoSansSymbols2 SDF asset there.
+   - Your main font draws letters; TMP automatically uses the fallback for ★.
+
+   B) DYNAMIC ATLAS (optional, for runtime packing)
+   - Select the Symbols 2 SDF asset → Atlas Population Mode = Dynamic.
+   - If Unity warns, enable Read/Write on the atlas texture as prompted.
+
+4) OPTIONAL: BREEDINGUIBUILDER FIELD
+   - Select the GameObject that has BreedingUIBuilder.
+   - Drag the same Noto Sans Symbols 2 SDF into "Symbols Fallback Font".
+   - At runtime the script also registers that asset as a fallback on Ascii Font (same effect as step 3A if the list was empty).
+
+5) WHAT GETS ★ IN THE GAME
+   - Cosmetic tier text uses ★ / ★★ / ★★★ in data (see BreezeCosmeticTables.cs).
+   - Racing stat lines do not use star prefixes.
+
+6) PROJECT DEFAULTS (already wired in repo)
+   - LiberationSans SDF now falls back: LiberationSans SDF - Fallback → NotoSansSymbols2-Regular SDF (guid 92b92eba3f5c8d84fa92635032848415).
+   - NotoSansSymbols2 SDF: Atlas Population Mode = Dynamic, atlas texture Read/Write enabled, creation settings include Unicode 9733 (U+2605 ★).
+
+7) AFTER PULLING GIT CHANGES — FORCE ATLAS TO INCLUDE ★
+   - In Unity: select Assets/Fonts/Noto_Sans_Symbols_2/NotoSansSymbols2-Regular SDF.asset
+   - Inspector: ensure Dynamic + Readable (should already match Noto Egyptian SDF).
+   - Menu: **Window → TextMeshPro → Font Asset** (or on the asset: **⋮ / Generate Font Atlas** depending on TMP version) and add character **9733**, OR use **Font Asset Creator** with Custom Character **★** and regenerate into the same asset path.
+   - Or enter **Play** once: BreedingUIBuilder calls TryAddCharacters(0x2605) on dynamic fallbacks.
+
+8) TROUBLESHOOTING
+   - Box / tofu: main TMP font is not LiberationSans SDF — add NotoSansSymbols2 to *that* font’s Fallback list too (Inspector).
+   - Pink/missing material: assign default TMP material on the new font asset or use "LiberationSans SDF" material as reference when creating the asset.
